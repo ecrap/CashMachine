@@ -1,0 +1,78 @@
+﻿@model CashMachine.Models.MovementVm
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Withdrawal</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/PageJs/Withdrawal.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div>
+    <form action="~/Movement/Extraction" method="post">
+        <div class="table" align="center">
+            <div class="row">
+                <br /><br /><br /><br /><br />
+                <span class="panel-heading" align="center">ATM Withdrawal</span>
+                <br /><br />
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.TextBoxFor(m => m.Movement.ammount, new { placeholder = "Enter ammount" })
+                    <br />&nbsp;
+                </div>
+            </div>
+            <div class="row mt-6">
+                <div class="col-md-12">
+                    <button class="btn btn-primary" type="button" value="1" onclick="textFill(this.value)">1</button>
+                    <button class="btn btn-primary" type="button" value="2" onclick="textFill(this.value)">2</button>
+                    <button class="btn btn-primary" type="button" value="3" onclick="textFill(this.value)">3</button>
+                </div>
+                <div class="row mt-6">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary" type="button" value="4" onclick="textFill(this.value)">4</button>
+                        <button class="btn btn-primary" type="button" value="5" onclick="textFill(this.value)">5</button>
+                        <button class="btn btn-primary" type="button" value="6" onclick="textFill(this.value)">6</button>
+                    </div>
+                </div>
+                <div class="row mt-6">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary" type="button" value="4" onclick="textFill(this.value)">7</button>
+                        <button class="btn btn-primary" type="button" value="5" onclick="textFill(this.value)">8</button>
+                        <button class="btn btn-primary" type="button" value="6" onclick="textFill(this.value)">9</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary" type="button">&nbsp;&nbsp;</button>
+                        <button class="btn btn-primary" type="button" value="0" onclick="textFill(this.value)">0</button>
+                        <button class="btn btn-primary" type="button" value="." onclick="textFill(this.value)">.&nbsp;</button>
+                    </div>
+                </div>
+                <br />
+                @Html.HiddenFor(m => m.Movement.cardNumber)
+                <input id="btnok" type="submit" value="OK"/>
+                <input type="button" value="Clear" onclick="Clear()">
+                <input type="button" value="Exit" onclick="@("location.href='" + Url.Action("Account", "Account") + "'")" />
+                <br />
+                @if (@Model.ErrorId <= 0)
+                {
+                    <span class="field-validation-error" style="color: red" id="errorText">  @Model.ErrorMessage</span>
+                }
+                else
+                {
+                    <span class="field-validation-error" style="color: green" id="errorText"> You have successfully withdrawn $ @($"{ @Model.Movement.ammount:#.00}") </span>
+                }
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

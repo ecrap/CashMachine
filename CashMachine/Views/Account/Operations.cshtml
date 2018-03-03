@@ -1,0 +1,44 @@
+﻿@model CashMachine.Models.MovementVm
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Operations</title>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div align="center">
+        <div class="panel-heading">
+            <br /><br /><br /><br /><br />
+            <h3 class="panel-title">ATM Operations</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <form action="~/Movement/Balance" method="post">
+                    @Html.HiddenFor(m => m.Movement.cardNumber)
+                    <button class="btn btn-primary" type="submit" onclick="">Balance</button>
+                </form>
+                <br />
+                <form action="~/Movement/Withdrawal" method="post">
+                    @Html.HiddenFor(m => m.Movement.cardNumber)
+                    <button class="btn btn-primary" type="submit" onclick="">Withdrawal</button>
+                </form>
+                <br/>
+                <form action="~/Movement/Report" method="post">
+                    @Html.HiddenFor(m => m.Movement.cardNumber)
+                    <button class="btn btn-primary" type="submit" onclick="">Operations Report</button>
+                </form>
+                <br />
+                <button class="btn btn-primary" type="button" onclick="@("location.href='" + Url.Action("Account", "Account") + "'")">Exit</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@using CashMachine.Models
+@model CashMachine.Models.MovementVm
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Operations Report</title>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div align="center">
+        <div class="row">
+            <br /><br /><br /><br /><br />
+            <span class="panel-heading" align="center">Operations Report: <strong>@Model.Movement.cardNumber</strong></span>
+            <br /><br />
+        </div>
+    </div>
+    <div align="center">
+        <table class="table-bordered">
+            <tr style="background-color: #00008b; color: white; text-align: center;">
+                <td class="col-xs-3">Date</td>
+                <td class="col-xs-3">Operation</td>
+                <td class="col-xs-3">Ammount</td>
+                <td class="col-xs-3">Balance</td>
+            </tr>
+            @foreach (var mov in @Model.Movements)
+            {
+                <tr style="text-align: center;">
+                    <td>@mov.movementDate</td>
+                    <td>@Convert.ToString((Operations)@mov.operation)</td>
+                    <td>$ @($"{@mov.ammount:#0.00}") </td>
+                    <td>$ @($"{@mov.previousBalance:#0.00}")</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div align="center">
+        <br /><br />
+        <input type="button" value="Back" onclick="window.history.back();">
+        <input type="button" value="Exit" onclick="@("location.href='" + Url.Action("Account", "Account") + "'")" />
+    </div>
+</body>
+</html>
