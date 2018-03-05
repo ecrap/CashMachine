@@ -6,7 +6,9 @@ $(function () {
 
 function textFill(numb) {
     var x = $("#Account_cardNumber").val();
-    $("#Account_cardNumber").val(x + numb);
+    if (x.length < 19) {
+        $("#Account_cardNumber").val(x + numb);
+    }
 }
 
 function pinFill(numb) {
