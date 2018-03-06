@@ -1,13 +1,19 @@
 $(function () {
-    $("#Account_cardNumber").bind('keyup paste', function () {
+    $("#Account_cardNumber").bind('keypress paste', function () {
         this.value = this.value.replace(/[^0-9-]/g, '');
-	});
+        if (this.value.length % 5 === 0) {
+        }
+    });
 });
 
 function textFill(numb) {
     var x = $("#Account_cardNumber").val();
     if (x.length < 19) {
-        $("#Account_cardNumber").val(x + numb);
+        if ((x.length + 1) % 5 === 0) {
+            $("#Account_cardNumber").val(x +"-" +numb);
+        }else{
+            $("#Account_cardNumber").val(x + numb);
+        }
     }
 }
 
