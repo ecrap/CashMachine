@@ -1,7 +1,10 @@
 $(function () {
     $("#Account_cardNumber").bind('keypress paste', function () {
         this.value = this.value.replace(/[^0-9-]/g, '');
-        if (this.value.length % 5 === 0) {
+        if (this.value.length < 19) {
+            if ((this.value.length + 1) % 5 === 0) {
+                this.value += "-";
+            }
         }
     });
 });
