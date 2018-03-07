@@ -6,12 +6,13 @@ using System.Web;
 
 namespace CashMachine.Models
 {
-    public class AccountVm
+    public class ErrorVm
     {
-        public AccountVm()
+        public ErrorVm()
         {
-            Account = new Account();
+            
         }
-        public Account Account { get; set; }
+        public int ErrorId { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }

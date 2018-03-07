@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@model CashMachine.Models.ErrorVm
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -8,7 +12,8 @@
 <body>
     <hgroup>
         <h1>Error.</h1>
-        <h2>Error al procesar la solicitud.</h2>
+        <h2>@Model.ErrorId</h2>
+        <h2>@Model.ErrorMessage</h2>
     </hgroup>
 </body>
 </html>

@@ -135,6 +135,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\ErrorVm.cs" />
     <Compile Include="Models\AccountVm.cs" />
     <Compile Include="Models\Movement.cs" />
     <Compile Include="Models\MovementVm.cs" />

@@ -8,24 +8,46 @@ namespace CashMachine.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Movement
-        public ActionResult Account(AccountVm mov)
+        private CashMachineDal Dal { get; set; }
+
+        public AccountController()
         {
-            return View(mov);
+            Dal = new CashMachineDal();
         }
 
-        public ActionResult Validate(AccountVm mov)
+        // GET: Movement
+        public ActionResult Account(AccountVm account)
         {
-            //var dal = new CashMachineDal();
-            //mov.Movements = dal.Movements.ToList().Where(x => x.cardNumber == mov.Movement.cardNumber).ToList();
-            return View("pin",mov);
+            return View(account);
+        }
+
+        public ActionResult Validate(AccountVm account)
+        {
+            
+            var view = "pin";
+            object vm;
+            var acc = Dal.Accounts.FirstOrDefault(x => x.cardNumber == account.Account.cardNumber);
+            if (acc == null)
+            {
+                var err = new ErrorVm
+                {
+                    ErrorId = -1,
+                    ErrorMessage = "Ivalid Card Number"
+                };
+                view = "Error";
+                vm = err;
+            }
+            else
+            {
+                vm = account;
+            }
+            return View(view, vm);
         }
 
         public ActionResult Pin(AccountVm mov)
         {
-            //var dal = new CashMachineDal();
             //mov.Movements = dal.Movements.ToList().Where(x => x.cardNumber == mov.Movement.cardNumber).ToList();
-            return View("pin", mov);
+            return View( mov);
         }
     }
 }
