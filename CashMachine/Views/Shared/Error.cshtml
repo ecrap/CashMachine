@@ -5,15 +5,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
     <title>Error</title>
 </head>
 <body>
+
+<div align="center">
     <hgroup>
         <h1>Error.</h1>
         <h2>@Model.ErrorId</h2>
         <h2>@Model.ErrorMessage</h2>
     </hgroup>
+</div>
+   
 </body>
 </html>

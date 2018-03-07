@@ -8,11 +8,8 @@ namespace CashMachine.Models
 {
     public class ErrorVm
     {
-        public ErrorVm()
-        {
-            
-        }
         public int ErrorId { get; set; }
         public string ErrorMessage { get; set; }
+        public string CardNumber { get; set; }
     }
 }
